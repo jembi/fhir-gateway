@@ -37,7 +37,7 @@ import org.hl7.fhir.r4.model.ResourceType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ScopeAccessChecker implements AccessChecker {
+public class SmartBackendAccessChecker implements AccessChecker {
 
   private static final Logger logger = LoggerFactory.getLogger(PatientAccessChecker.class);
 
@@ -46,7 +46,7 @@ public class ScopeAccessChecker implements AccessChecker {
 
   private final SmartScopeChecker smartScopeChecker;
 
-  private ScopeAccessChecker(
+  private SmartBackendAccessChecker(
       FhirContext fhirContext, PatientFinder patientFinder, SmartScopeChecker smartScopeChecker) {
     this.fhirContext = fhirContext;
     this.patientFinder = patientFinder;
@@ -265,7 +265,7 @@ public class ScopeAccessChecker implements AccessChecker {
         HttpFhirClient httpFhirClient,
         FhirContext fhirContext,
         PatientFinder patientFinder) {
-      return new ScopeAccessChecker(fhirContext, patientFinder, getSmartFhirPermissionChecker(jwt));
+      return new SmartBackendAccessChecker(fhirContext, patientFinder, getSmartFhirPermissionChecker(jwt));
     }
   }
 }

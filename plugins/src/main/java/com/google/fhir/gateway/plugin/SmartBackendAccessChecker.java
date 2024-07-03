@@ -265,7 +265,8 @@ public class SmartBackendAccessChecker implements AccessChecker {
         HttpFhirClient httpFhirClient,
         FhirContext fhirContext,
         PatientFinder patientFinder) {
-      return new SmartBackendAccessChecker(fhirContext, patientFinder, getSmartFhirPermissionChecker(jwt));
+      return new SmartBackendAccessChecker(
+          fhirContext, patientFinder, getSmartFhirPermissionChecker(jwt));
     }
   }
 }
